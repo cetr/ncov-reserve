@@ -20,7 +20,7 @@ public interface ReserveDao {
      */
     List<Reserve> getAllReserve();
 
-    Reserve getOneReservByIdcard(String id_card);
+    List<Reserve> getOneReservByIdcard(String id_card,  Boolean isEnd);
 
     boolean vaccinate(String id);
 }

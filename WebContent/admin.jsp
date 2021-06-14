@@ -1,26 +1,66 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: cetr
-  Date: 13/06/21
-  Time: 下午12:13
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" language="java" %>
 <html>
 <head>
-    <title>管理端</title>
+    <title>新冠疫苗预约系统 - 管理端</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"></script>
+    <style>
+        .con {
+            width: 1200px;
+            height: 380px;
+            margin: 200px auto;
+        }
+
+        .form-div {
+            float: left;
+            width: 500px;
+            margin-top: 50px;
+            margin-left: 50px;
+        }
+
+        .form-group {
+            margin-top: 9px;
+        }
+
+        .img {
+            float: left;
+        }
+
+        label {
+            font-weight: bolder;
+        }
+    </style>
 </head>
 <body>
-<form action="/login" method="post">
-    用户名: <input type="text" name="usernameOrPhone" id="username"/><br>
-    密码: <input type="password" name="password" id="password"><br>
-    <button type="submit">登录</button>
-    <a href="register.jsp">
-        <button type="button">去注册</button>
-    </a>
-    <br>
-    ${requestScope.info}
-    ${requestScope.error}
-</form>
+<div class="con">
+    <div class="img"><img
+            src="https://nimg.ws.126.net/?url=http%3A%2F%2Fdingyue.ws.126.net%2F2021%2F0612%2F026e2611p00qulguj001yd200u000gvg00it00ak.png&thumbnail=650x2147483647&quality=80&type=jpg">
+    </div>
+    <div class="form-div">
+
+        <h3>新冠疫苗预约系统 - 登录</h3><br>
+        <form action="/login" method="post">
+            <div class="form-group">
+                <label for="username">用户名/电话</label>
+                <input type="text" name="usernameOrPhone" id="username" class="form-control"/><br>
+            </div>
+            <div class="form-group">
+                <label for="password">密码</label>
+                <input type="password" name="password" class="form-control" id="password">
+            </div>
+            <div class="form-group" style="margin-top: 20px">
+                <button type="submit" class="btn btn-primary">登录</button>
+                <a href="register.jsp">
+                    <button type="button" class="btn btn-default">去注册</button>
+                </a>
+            </div>
+            <p style="color:red;">
+                ${requestScope.info}
+                ${requestScope.error}
+            </p>
+        </form>
+    </div>
+</div>
 </body>
 </html>

@@ -26,24 +26,28 @@ public class ReserveDaoImpl implements ReserveDao {
 
     @Override
     public List<Reserve> getAllReserve() {
-        String sql = "select * from biz_reserve";
+        String sql = "select * from biz_reserve where is_end = '0'";
         Object[] object = {};
         List<Reserve> reserveList = baseDaoUtil.selectReserve(sql, object);
         return reserveList;
     }
 
     @Override
-    public Reserve getOneReservByIdcard(String id_card) {
-        String sql = "select * from biz_reserve where biz_reserve.id_card = ?";
-        Object[] object = {
-                id_card
-        };
-        List<Reserve> reserveList = baseDaoUtil.selectReserve(sql, object);
-        Reserve reserve = new Reserve();
-        if (reserveList.size() == 1) {
-            reserve = reserveList.get(0);
+    public List<Reserve> getOneReservByIdcard(String id_card, Boolean isEnd) {
+        String sql = "select * from biz_reserve ";
+        Object[] object = {};
+
+        if (id_card != null && !"".equals(id_card)) {
+            sql += "where id_card = '" + id_card + "'";
+            if (!isEnd) {
+                sql += " and is_end = '0'";
+            }
+        }  else {
+            if (!isEnd) {
+                sql += " where is_end = '0'";
+            }
         }
-        return reserve;
+        return baseDaoUtil.selectReserve(sql, object);
     }
 
     @Override

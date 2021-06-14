@@ -28,21 +28,14 @@ public class FindReservByIdcardTableServlet extends HttpServlet {
         }
 
         String id_card = request.getParameter("id_card");
+        Boolean isEnd = "on".equals(request.getParameter("isEnd"));
 
         ReserveService reserveService = new ReserveServiceImpl();
-        Reserve reserv = reserveService.getOneReservByIdcard(id_card);
+        List<Reserve> reserv = reserveService.getOneReservByIdcard(id_card, isEnd);
+        request.setAttribute("reserveList",reserv);
+        request.setAttribute("info", "成功");
+        request.getRequestDispatcher("reservmanage.jsp").forward(request, response);
 
-        List<Reserve> tempList = new ArrayList<Reserve>();
-        tempList.add(reserv);
-
-        if (reserv.getName() != null) {
-            request.setAttribute("reserveList",tempList);
-            request.setAttribute("info", "成功");
-            request.getRequestDispatcher("reservmanage.jsp").forward(request, response);
-        } else {
-            request.setAttribute("error", "失败");
-            request.getRequestDispatcher("/findReservTable").forward(request, response);
-        }
     }
 
     @Override

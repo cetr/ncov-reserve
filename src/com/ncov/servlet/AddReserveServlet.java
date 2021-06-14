@@ -19,21 +19,22 @@ public class AddReserveServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
         response.setContentType("text/html;charset=utf-8");
-
+        response.setCharacterEncoding("utf-8");
         String name = request.getParameter("name");
         String phone = request.getParameter("phone");
         String sex = request.getParameter("sex");
         String id_card = request.getParameter("id_card");
+        String resTime = request.getParameter("res_time");
 
         Date date = new Date();
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         String nowTime = simpleDateFormat.format(date);
 
         Reserve reserve = new Reserve();
         reserve.setName(name);
         reserve.setPhone(phone);
         reserve.setSex(sex);
-        reserve.setReserveTime(nowTime);
+        reserve.setReserveTime(resTime);
         reserve.setIsEnd("0");
         reserve.setIdCard(id_card);
 
@@ -42,14 +43,14 @@ public class AddReserveServlet extends HttpServlet {
         //判断是否已经预约过了
         if (reserveService.isSubscribe(id_card)) {
             if (reserveService.addReserver(reserve)) {
-                request.setAttribute("info", "预约成功");
+                request.setAttribute("info", "你已经预约成功");
                 request.getRequestDispatcher("index.jsp").forward(request, response);
             } else {
                 request.setAttribute("error", "预约失败");
                 request.getRequestDispatcher("index.jsp").forward(request, response);
             }
         } else {
-            request.setAttribute("info", "预约失败,已经预约过了！");
+            request.setAttribute("info", "预约失败, 你已经预约过了！");
             request.getRequestDispatcher("index.jsp").forward(request, response);
         }
     }

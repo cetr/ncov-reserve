@@ -32,9 +32,9 @@ public class LoginInServlet extends HttpServlet {
             httpSession.setAttribute("islogin","y");
 
             request.setAttribute("info", "登录成功");
-            request.getRequestDispatcher("/findReservTable").forward(request, response);
+            response.sendRedirect("/findReservTable");
         } else {
-            request.setAttribute("error", "登录失败");
+            request.setAttribute("error", "用户名或密码错误");
             request.getRequestDispatcher("admin.jsp").forward(request, response);
         }
     }

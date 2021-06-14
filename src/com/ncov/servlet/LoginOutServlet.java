@@ -18,7 +18,7 @@ public class LoginOutServlet extends HttpServlet {
         httpSession.removeAttribute("islogin");
 
         request.setAttribute("info", "注销成功");
-        request.getRequestDispatcher("admin.jsp").forward(request, response);
+        response.sendRedirect("admin.jsp");
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

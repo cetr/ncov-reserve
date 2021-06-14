@@ -16,7 +16,7 @@ public interface ReserveService {
 
     List<Reserve> getAllReserv();
 
-    Reserve getOneReservByIdcard(String id_card);
+    List<Reserve> getOneReservByIdcard(String id_card, Boolean isEnd);
 
     boolean vaccinate(String id);
 }

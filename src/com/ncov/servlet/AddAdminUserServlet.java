@@ -31,7 +31,7 @@ public class AddAdminUserServlet extends HttpServlet {
         UserService userService = new UserServiceImpl();
         if(userService.register(user)){
             request.setAttribute("info", "注册成功");
-            request.getRequestDispatcher("admin.jsp").forward(request, response);
+            response.sendRedirect("admin.jsp");
         } else {
             request.setAttribute("error", "注册失败");
             request.getRequestDispatcher("register.jsp").forward(request, response);
