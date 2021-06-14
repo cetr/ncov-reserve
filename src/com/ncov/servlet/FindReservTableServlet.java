@@ -29,14 +29,10 @@ public class FindReservTableServlet extends HttpServlet {
         ReserveService reserveService = new ReserveServiceImpl();
         List<Reserve> reserveList = reserveService.getAllReserv();
 
-        if (reserveList.size() > 0) {
-            request.setAttribute("reserveList", reserveList);
-            request.setAttribute("info", "成功");
-            request.getRequestDispatcher("reservmanage.jsp").forward(request, response);
-        } else {
-            request.setAttribute("error", "失败");
-            request.getRequestDispatcher("admin.jsp").forward(request, response);
-        }
+        request.setAttribute("reserveList", reserveList);
+        request.setAttribute("info", "成功");
+        request.getRequestDispatcher("reservmanage.jsp").forward(request, response);
+
     }
 
     @Override

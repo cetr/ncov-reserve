@@ -21,9 +21,12 @@ public class ReserveServiceImpl implements ReserveService {
 
     @Override
     public boolean isSubscribe(String id_card) {
-        Reserve reserv = reserveDao.getOneReservByIdcard(id_card, true).get(0);
+        List<Reserve> reserv = reserveDao.getOneReservByIdcard(id_card, true);
         //随便判断一个字段是否有数据
-        if (reserv.getIdCard() == null) {
+        if (reserv.size() == 0) {
+            return true;
+        }
+        if (reserv.size() > 0 && reserv.get(0).getIdCard() == null) {
             return true;
         }
         return false;
