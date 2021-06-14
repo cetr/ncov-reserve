@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="nocv_reserve:Web exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/nocv_reserve_Web_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="nocv_reserve/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="nocv_reserve" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
