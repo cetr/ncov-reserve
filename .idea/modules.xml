@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/nocv_reserve.iml" filepath="$PROJECT_DIR$/nocv_reserve.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ncov_reserve.iml" filepath="$PROJECT_DIR$/ncov_reserve.iml" />
     </modules>
   </component>
 </project>
